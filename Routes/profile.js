@@ -11,13 +11,14 @@ const Profile = new mongoose.model("profile", userShema);
 
 
 router.post('/', upload.single('image'),(req, res)=>{
-    let path = "http://localhost:4007/assets/" +req.filename
+    let path = "https://backend.grighund.net:5005/assets/" +req.filename
     let profile = new Profile({
         name: req.body.name,
         userName: req.body.userName,
         email: req.body.email,
         image: path,
     });
+    console.log(profile)
      profile
      .save()
      .then(()=> res.json("New User Added successfully"))
